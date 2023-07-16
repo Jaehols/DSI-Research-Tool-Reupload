@@ -1,0 +1,19 @@
+title Author Searching
+
+actor "User" as user
+participant "Chart.vue" as chart
+participant "data.js" as store
+participant "searchService.js" as searchs
+database "Back End" as back
+
+user->chart: Clicks to focus node
+activate chart
+chart->searchs: searchAuthor(node.id)
+activate searchs
+searchs->back: http://localhost:3000/author/${authorId}
+searchs<--back: response
+chart<--searchs:response.data
+deactivate searchs
+chart->store: getAuthorResults(data)
+user<--chart: Display sidebar\nwith author information
+deactivate chart

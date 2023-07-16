@@ -1,0 +1,35 @@
+title Searching
+
+actor "User" as user
+participant "SearchPage.vue" as spage
+participant "Chart.vue" as chart
+participant "data.js" as store
+participant "searchService.js" as searchs
+database "Back End" as back
+
+
+user->spage: Enter query and click search
+spage->spage: search(term, location)
+activate spage
+spage->searchs: getSearchParams(term, location)
+activate searchs
+searchs->back: http://localhost:3000/search?search-term=${searchTerm}
+activate back
+searchs<--back: response
+deactivate back
+spage<--searchs: response.data
+deactivate searchs
+spage->store: defaultSearch(result)
+spage->store: setEmptyState(false)
+spage->spage: onLoadChart()
+activate spage
+spage->chart:showEchart()
+deactivate spage
+deactivate spage
+activate chart
+chart->store:getGraph()
+activate store
+chart<--store: series[data, links,categories],\nlegend[categories]\n\nSwitch based on radio button \nselection n the chart
+deactivate store
+user<--chart: Display Chart
+deactivate chart

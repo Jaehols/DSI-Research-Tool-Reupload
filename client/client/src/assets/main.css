@@ -1,0 +1,54 @@
+@import "./base.css";
+
+.el-header#detail {
+  background-color: #B3C0D1;
+  color: #333;
+  line-height: 60px;
+}
+
+.el-aside,.el-header {
+  color: #333;
+}
+
+.selectTable :hover{
+  background-color: rgba(235,244,253,0.7)
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+  word-break:break-word;
+  word-wrap:break-word;
+  table-layout: fixed;
+  text-align: center;
+}
+table tr td{
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  height: 50px;
+  border-color: rgba(235,244,253,1);
+  text-wrap: normal;
+  word-wrap: normal;
+}
+.title-color{
+  color: rgba(20,20,20,0.66);
+}
+.diy_input{
+  border: solid 1px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.diy_input:focus{
+  border:  rgba(64,158,255,0) solid 1px;
+  outline: rgba(64,158,255,0.6) solid 2px;
+}
+
+.diy_input_red{
+  border: #F56C6C solid 1px;
+  outline: #F56C6C solid 2px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.diy_input_red:focus{
+  border:  rgba(64,158,255,0) solid 1px;
+  outline: rgba(64,158,255,0.6) solid 2px;
+}

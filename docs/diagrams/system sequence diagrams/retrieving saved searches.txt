@@ -1,0 +1,25 @@
+title Retrieving Saved Searches
+
+actor "User" as user
+participant "SearchPage.vue" as searchpage
+participant "SavedHistory.vue" as history
+participant "data.js" as store
+participant "saveService.js" as saves
+database "Back End" as back
+
+user->searchpage: Click on archive bar button
+searchpage->history: Visible=true
+searchpage->searchpage: localGetSavedSearches()
+activate searchpage
+searchpage->saves: getSavedSearches()
+activate saves
+saves->back:http://localhost:3000/saved-search
+activate back
+saves<--back:response
+deactivate back
+searchpage<--saves:response.data
+deactivate saves
+searchpage->store:getSavedSearchResults(data)
+deactivate searchpage
+history<--store: SavedSearchStore
+user<--history: Display List of Saved Searches

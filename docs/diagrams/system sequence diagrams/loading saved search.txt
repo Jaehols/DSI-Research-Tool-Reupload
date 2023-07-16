@@ -1,0 +1,42 @@
+title Loading Saved Search
+
+actor "User" as user
+participant "SavedHistory.vue" as history
+participant "SearchPage.vue" as searchpage
+
+participant "Chart.vue" as chart
+participant "data.js" as store
+participant "saveService.js" as saves
+database "Back End" as back
+
+user->history: Click on apply search button
+history->history: applySearch(id)
+activate history
+history->saves:getSavedInformation(id)
+activate saves
+saves->back:http://localhost:3000/saved-search/${id}
+activate back
+saves<--back:response
+deactivate back
+history<--saves: response.data
+deactivate saves
+history->store:defaultSearch(response.searchData.body)
+history->store:$patch({ isEmpty: false})
+history->searchpage:$emit("reloadChart")
+deactivate history
+searchpage->searchpage:onLoadChart()
+activate searchpage
+searchpage->searchpage:showChart()
+activate searchpage
+searchpage->chart:$refs.chart.showEchart()
+deactivate searchpage
+deactivate searchpage
+
+activate chart
+chart->store:getGraph()
+activate store
+chart<--store: series[data, links,categories],\nlegend[categories]\n\nSwitch based on radio button \nselection n the chart
+deactivate store
+user<--chart: Display Chart
+deactivate chart
+

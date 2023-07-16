@@ -1,0 +1,308 @@
+{
+  "title": "institution",
+  "type": "force",
+  "categories": [
+    {
+      "name": "Hazara University Pakistan",
+      "keyword": {},
+      "base": "Hazara University Pakistan"
+    },
+    {
+      "name": "Montreal Institute for Learning Algorithms",
+      "keyword": {},
+      "base": "Montreal Institute for Learning Algorithms"
+    },
+    {
+      "name": "Université McGill",
+      "keyword": {},
+      "base": "Université McGill"
+    },
+    {
+      "name": "Wayne State University",
+      "keyword": {},
+      "base": "Wayne State University"
+    },
+    {
+      "name": "Higher Institute of Technological Studies of Nabeul",
+      "keyword": {},
+      "base": "Higher Institute of Technological Studies of Nabeul"
+    },
+    {
+      "name": "Otto von Guericke University of Magdeburg",
+      "keyword": {},
+      "base": "Otto von Guericke University of Magdeburg"
+    },
+    {
+      "name": "Ecole Nationale d'Ingénieurs de Sfax",
+      "keyword": {},
+      "base": "Ecole Nationale d'Ingénieurs de Sfax"
+    },
+    {
+      "name": "Universiti Sains Malaysia",
+      "keyword": {},
+      "base": "Universiti Sains Malaysia"
+    },
+    {
+      "name": "Universiti Malaysia Kelantan",
+      "keyword": {},
+      "base": "Universiti Malaysia Kelantan"
+    },
+    {
+      "name": "Universitas Islam Indonesia",
+      "keyword": {},
+      "base": "Universitas Islam Indonesia"
+    },
+    {
+      "name": "Hefei University",
+      "keyword": {},
+      "base": "Hefei University"
+    },
+    {
+      "name": "University of Science and Technology of China",
+      "keyword": {},
+      "base": "University of Science and Technology of China"
+    },
+    {
+      "name": "The Bartlett Faculty of the Built Environment",
+      "keyword": {},
+      "base": "The Bartlett Faculty of the Built Environment"
+    },
+    {
+      "name": "Tom Mboya University College",
+      "keyword": {},
+      "base": "Tom Mboya University College"
+    },
+    {
+      "name": "COMSATS University Islamabad",
+      "keyword": {},
+      "base": "COMSATS University Islamabad"
+    },
+    {
+      "name": "Xi'an Technological University",
+      "keyword": {},
+      "base": "Xi'an Technological University"
+    },
+    {
+      "name": "UC Merced",
+      "keyword": {},
+      "base": "UC Merced"
+    },
+    {
+      "name": "Science and Technology on Complex System Control and Intelligent Agent Cooperation Laboratory",
+      "keyword": {},
+      "base": "Science and Technology on Complex System Control and Intelligent Agent Cooperation Laboratory"
+    },
+    {
+      "name": "Zhejiang Sci-Tech University",
+      "keyword": {},
+      "base": "Zhejiang Sci-Tech University"
+    },
+    {
+      "name": "Universidad Indoamérica",
+      "keyword": {},
+      "base": "Universidad Indoamérica"
+    },
+    {
+      "name": "Tianjin University",
+      "keyword": {},
+      "base": "Tianjin University"
+    },
+    {
+      "name": "Southern Federal University",
+      "keyword": {},
+      "base": "Southern Federal University"
+    },
+    {
+      "name": "CAST",
+      "keyword": {},
+      "base": "CAST"
+    },
+    {
+      "name": "Shanghai Institute of Space Power Sources",
+      "keyword": {},
+      "base": "Shanghai Institute of Space Power Sources"
+    },
+    {
+      "name": "Instituto Federal de Educação, Ciência e Tecnologia Fluminense – IFFluminense",
+      "keyword": {},
+      "base": "Instituto Federal de Educação, Ciência e Tecnologia Fluminense – IFFluminense"
+    },
+    {
+      "name": "University of Technology and Applied Sciences- Ibri (CAS)",
+      "keyword": {},
+      "base": "University of Technology and Applied Sciences- Ibri (CAS)"
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Hazara University Pakistan",
+      "index": 0,
+      "category": 0,
+      "value": 1
+    },
+    {
+      "name": "Montreal Institute for Learning Algorithms",
+      "index": 1,
+      "category": 1,
+      "value": 2
+    },
+    {
+      "name": "Université McGill",
+      "index": 2,
+      "category": 2,
+      "value": 2
+    },
+    {
+      "name": "Wayne State University",
+      "index": 3,
+      "category": 3,
+      "value": 1
+    },
+    {
+      "name": "Higher Institute of Technological Studies of Nabeul",
+      "index": 4,
+      "category": 4,
+      "value": 1
+    },
+    {
+      "name": "Otto von Guericke University of Magdeburg",
+      "index": 5,
+      "category": 5,
+      "value": 1
+    },
+    {
+      "name": "Ecole Nationale d'Ingénieurs de Sfax",
+      "index": 6,
+      "category": 6,
+      "value": 1
+    },
+    {
+      "name": "Universiti Sains Malaysia",
+      "index": 7,
+      "category": 7,
+      "value": 1
+    },
+    {
+      "name": "Universiti Malaysia Kelantan",
+      "index": 8,
+      "category": 8,
+      "value": 1
+    },
+    {
+      "name": "Universitas Islam Indonesia",
+      "index": 9,
+      "category": 9,
+      "value": 1
+    },
+    {
+      "name": "Hefei University",
+      "index": 10,
+      "category": 10,
+      "value": 2
+    },
+    {
+      "name": "University of Science and Technology of China",
+      "index": 11,
+      "category": 11,
+      "value": 2
+    },
+    {
+      "name": "The Bartlett Faculty of the Built Environment",
+      "index": 12,
+      "category": 12,
+      "value": 1
+    },
+    {
+      "name": "Tom Mboya University College",
+      "index": 13,
+      "category": 13,
+      "value": 1
+    },
+    {
+      "name": "COMSATS University Islamabad",
+      "index": 14,
+      "category": 14,
+      "value": 1
+    },
+    {
+      "name": "Xi'an Technological University",
+      "index": 15,
+      "category": 15,
+      "value": 2
+    },
+    {
+      "name": "UC Merced",
+      "index": 16,
+      "category": 16,
+      "value": 2
+    },
+    {
+      "name": "Science and Technology on Complex System Control and Intelligent Agent Cooperation Laboratory",
+      "index": 17,
+      "category": 17,
+      "value": 1
+    },
+    {
+      "name": "Zhejiang Sci-Tech University",
+      "index": 18,
+      "category": 18,
+      "value": 1
+    },
+    {
+      "name": "Universidad Indoamérica",
+      "index": 19,
+      "category": 19,
+      "value": 1
+    },
+    {
+      "name": "Tianjin University",
+      "index": 20,
+      "category": 20,
+      "value": 1
+    },
+    {
+      "name": "Southern Federal University",
+      "index": 21,
+      "category": 21,
+      "value": 1
+    },
+    {
+      "name": "CAST",
+      "index": 22,
+      "category": 22,
+      "value": 1
+    },
+    {
+      "name": "Shanghai Institute of Space Power Sources",
+      "index": 23,
+      "category": 23,
+      "value": 1
+    },
+    {
+      "name": "Instituto Federal de Educação, Ciência e Tecnologia Fluminense – IFFluminense",
+      "index": 24,
+      "category": 24,
+      "value": 1
+    },
+    {
+      "name": "University of Technology and Applied Sciences- Ibri (CAS)",
+      "index": 25,
+      "category": 25,
+      "value": 1
+    }
+  ],
+  "links": [
+    {
+      "source": 1,
+      "target": 2
+    },
+    {
+      "source": 10,
+      "target": 11
+    },
+    {
+      "source": 15,
+      "target": 16
+    }
+  ]
+}

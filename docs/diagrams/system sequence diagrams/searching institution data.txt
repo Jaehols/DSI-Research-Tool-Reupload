@@ -1,0 +1,19 @@
+title Institution Searching
+
+actor "User" as user
+participant "Chart.vue" as chart
+participant "data.js" as store
+participant "searchService.js" as searchs
+database "Back End" as back
+
+user->chart: Clicks to focus node
+activate chart
+chart->searchs: searchInstitution(node.id)
+activate searchs
+searchs->back: http://localhost:3000/institution/${intitutionId}
+searchs<--back: response
+chart<--searchs:response.data
+deactivate searchs
+chart->store: getIntitutionResults(data)
+user<--chart: Display sidebar\nwith institution information
+deactivate chart

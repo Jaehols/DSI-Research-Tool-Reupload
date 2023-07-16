@@ -1,0 +1,449 @@
+openapi: 3.0.0
+info:
+  title: Quokka API
+  description: This API exposes endpoints for the Quokka frontend to search for connections between articles, authors and instiutions.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+
+paths:
+  /search:
+    get:
+      summary: Returns a graph of connected articles, authors and papers.
+      parameters:
+        - in: query
+          name: search-term
+          schema:
+            type: string
+            example: ai
+          description: The search term for downstream scopus search
+          required: true
+
+        - in: query
+          name: date
+          schema:
+            type: string
+            example: 1992-2001
+          description: The date range for the search. To be provided in the format YYYY-YYYY
+
+        - in: query
+          name: country
+          schema:
+            type: string
+            example: Australia
+          description: The country to filter on during the search
+
+      responses:
+        '200':
+          description: A JSON object that provides the links between articles, authors & instiutions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/search'
+
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+  /article:
+    get:
+      summary: Get an article's details from Scopus.
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+            example: 123456
+
+      responses:
+        '200':
+          description: A JSON object that provides the details about the article.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/article'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+  /author:
+    get:
+      summary: Get an author's details from Scopus.
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+            example: 123456
+
+      responses:
+        '200':
+          description: A JSON object that provides the details about the author.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/author'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+  /institution:
+    get:
+      summary: Get an instituion's details from Scopus.
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+            example: 123456
+
+      responses:
+        '200':
+          description: A JSON object that provides the details about the author.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/institution'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+  /saved-search:
+    get:
+      summary: Get saved searches from database.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            example: 123456
+      responses:
+        '200':
+          description: A JSON object that provides the details about the author.
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/savedSearch'
+                  - $ref: '#/components/schemas/savedSearchById'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+    post:
+      summary: Post saved search to database
+      parameters:
+        - in: query
+          name: search-term
+          schema:
+            type: string
+            example: ai
+          description: The search term to save
+          required: true
+      requestBody:
+        description: Search results that are being saved
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/search'
+      responses:
+        '201':
+          description: A JSON object confirming the search has been saved.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'Search saved'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+    delete:
+      summary: Delete saved search from database.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+            example: 123456
+          required: true
+      responses:
+        '200':
+          description: A JSON object confirming the search has been deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'Entry deleted'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+    put:
+      summary: Edit the name of the saved search
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+            example: 123456
+
+        - in: query
+          name: search-term
+          schema:
+            type: string
+            example: ai
+          description: The search term to save
+          required: true
+      responses:
+        '200':
+          description: A JSON object confirming the search has been updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: 'Entry name updated'
+
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/serverError'
+
+components:
+  schemas:
+    savedSearchById:
+      type: object
+      properties:
+        _id:
+          type: string
+        term:
+          type: string
+        name:
+          type: string
+        searchData:
+          type: object
+          properties:
+            body:
+              $ref: '#components/schemas/search'
+        savedAt:
+          type: string
+        __v:
+          type: string
+
+    savedSearch:
+      type: object
+      properties:
+        _id:
+          type: string
+        term:
+          type: string
+        name:
+          type: string
+        savedAt:
+          type: string
+        __v:
+          type: string
+
+    institution:
+      type: object
+      properties:
+        name:
+          type: string
+        profile:
+          type: string
+        authorCount:
+          type: string
+        documentCount:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+    author:
+      type: object
+      properties:
+        name:
+          type: string
+        profile:
+          type: string
+        institution:
+          type: string
+        articleCount:
+          type: string
+        citationCount:
+          type: string
+        citedByCount:
+          type: string
+        subjectAreas:
+          type: array
+          items:
+            type: string
+        publicationRange:
+          type: object
+          properties:
+            start:
+              type: string
+            end:
+              type: string
+
+    article:
+      type: object
+      properties:
+        name:
+          type: string
+        link:
+          type: string
+        abstract:
+          type: string
+        aggregationType:
+          type: string
+        publisher:
+          type: string
+        volume:
+          type: string
+        issue:
+          type: string
+        coverDate:
+          type: string
+        citedByCount:
+          type: string
+        author:
+          type: array
+          items:
+            type: string
+        institution:
+          type: array
+          items:
+            type: string
+
+    search:
+      type: object
+      properties:
+        institution:
+          $ref: '#/components/schemas/institutionSearch'
+        author:
+          $ref: '#/components/schemas/authorSearch'
+        article:
+          $ref: '#/components/schemas/articleSearch'
+
+    institutionSearch:
+      type: object
+      properties:
+        categories:
+          $ref: '#/components/schemas/categories'
+        nodes:
+          $ref: '#/components/schemas/nodes'
+        links:
+          $ref: '#/components/schemas/links'
+
+    authorSearch:
+      type: object
+      properties:
+        categories:
+          $ref: '#/components/schemas/categories'
+        nodes:
+          $ref: '#/components/schemas/nodes'
+        links:
+          $ref: '#/components/schemas/links'
+
+    articleSearch:
+      type: object
+      properties:
+        categories:
+          $ref: '#/components/schemas/categories'
+        nodes:
+          $ref: '#/components/schemas/nodes'
+        links:
+          $ref: '#/components/schemas/links'
+
+    categories:
+      type: array
+      items:
+        $ref: '#/components/schemas/category'
+
+    nodes:
+      type: array
+      items:
+        $ref: '#/components/schemas/node'
+
+    links:
+      type: array
+      items:
+        $ref: '#/components/schemas/link'
+
+    category:
+      type: object
+      properties:
+        name:
+          type: string
+        keyword:
+          type: object
+        base:
+          type: string
+
+    node:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: string
+        index:
+          type: integer
+        category:
+          type: integer
+        value:
+          type: integer
+        symbolSize:
+          type: integer
+
+    link:
+      type: object
+      properties:
+        source:
+          type: integer
+        destination:
+          type: integer
+
+    serverError:
+      type: object
+      properties:
+        description:
+          type: string
+          example: 'Internal Server Error'
